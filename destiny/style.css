@@ -1,0 +1,375 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Değişkenler */
+:root {
+  --green: #49fd01;
+  --white: #f5f5f5;
+  --gray: #cdcccc;
+  --black: #121212;
+}
+/* Standart Tanımlama ve Stil Sıfırlama */
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Inter";
+  color: var(--white);
+}
+p {
+  font-family: "Poppins";
+  color: var(--gray);
+}
+section {
+  padding: 30px;
+}
+
+button {
+  font-family: "Poppins";
+  border: none;
+  cursor: pointer;
+  padding: 7px 20px;
+  font-size: 16px;
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+button:hover {
+  /* boyutun oran bazında değiştirmeye yarar */
+  scale: 0.95;
+  box-shadow: 2px 2px 20px var(--gray);
+  transition: all 0.4s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* Ana Stiller */
+body {
+  background-color: var(--black);
+  font-family: "Poppins";
+}
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  background-color: var(--black);
+  z-index: 999;
+}
+header .nav-btn {
+  display: none;
+}
+header nav {
+  display: flex;
+  gap: 20px;
+}
+header nav .spec-link {
+  color: var(--green);
+}
+
+/* Footer */
+footer {
+  margin-top: 100px;
+  padding: 20px;
+}
+footer .links {
+  display: grid;
+  /* gridde sütün sayısını belirler */
+  grid-template-columns: repeat(4, 1fr);
+  /* yalnızca sütünlar arası boşluk */
+  column-gap: 20px;
+}
+footer .links .link-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+footer form {
+  display: flex;
+  gap: 20px;
+}
+footer form input {
+  padding: 5px 10px;
+  border-radius: 10px;
+  max-height: 50px;
+  outline: none;
+}
+footer form button {
+  background-color: var(--green);
+  /* yazının alt satıra geçmesini engeller */
+  white-space: nowrap;
+}
+footer .bottom {
+  text-align: center;
+  margin-top: 50px;
+  border-top: 1px solid var(--gray);
+  padding: 20px;
+}
+
+/* Hero */
+#hero {
+  background: url(images/back.jpg);
+  height: 50vh;
+  background-size: cover;
+  /* 
+    * sayfada aşağıda olan elemanlar 
+    * geliyormuş gibi efekt verir
+  */
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+}
+#hero-inner {
+  border: 1px solid red;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  margin-left: 20px;
+  /* cam efekti */
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  border: 1px solid rgba(255, 255, 255, 0.29);
+}
+#hero-inner h1 {
+  color: #49fd01;
+}
+#hero-inner p {
+  text-shadow: 2px 2px 10px black;
+  color: #f5f5f5;
+}
+#hero-inner button:nth-child(1) {
+  background: var(--green);
+}
+
+/* Pencereler Alanı */
+#window-sec {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+}
+.window-sec-info {
+  max-width: 600px;
+  display: grid;
+  gap: 30px;
+}
+.window-sec-info button {
+  max-height: 60px;
+}
+
+.windows {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 50px;
+}
+.windows .window {
+  min-width: 200px;
+  height: 400px;
+  background: url(images/sec2.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  border-radius: 40px 40px 0 0;
+}
+.windows .window:nth-child(2) {
+  border-radius: 40px;
+}
+/* Kartlar Alanı */
+.cards-sec-info {
+  display: grid;
+  max-width: 600px;
+  gap: 40px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.card {
+  border: 1px solid gray;
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+.card video {
+  max-width: 200px;
+}
+/* Liste Alanı */
+#list-sec {
+  margin: 50px 0;
+}
+
+#list-sec .info {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+#list-sec .info h2,
+.info p {
+  max-width: 400px;
+}
+#list-sec ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+#list-sec ul li img {
+  width: 50px;
+}
+#list-sec ul li h1 span {
+  color: gray;
+  font-weight: 150;
+  font-size: 15px;
+  margin-bottom: 8%;
+}
+
+/*! Projeler Sayfası*/
+.welcome {
+  max-width: 1300px;
+  font-size: 56px;
+  padding: 100px;
+  background-image: linear-gradient(270deg, #3ee5ec 0%, #ee74e1 100%);
+  /* arkaplanı yazıya aktarma */
+  -webkit-background-clip: text;
+  /* yazıya aktardığımız arkaplanı görme */
+  -webkit-text-fill-color: transparent;
+}
+#what-sec {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+#what-sec .info {
+  max-width: 400px;
+}
+#what-sec .info h1 {
+  margin-bottom: 50px;
+}
+#what-sec .cards {
+  display: flex;
+  gap: 100px;
+}
+#what-sec .cards .what-card {
+  min-width: 200px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  background-color: #323443;
+  border-radius: 10px;
+  padding: 30px 20px;
+  position: relative;
+}
+#what-sec .cards .what-card img {
+  position: absolute;
+  width: 50px;
+  top: -50px;
+}
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+
+*/
+
+/*! Responsive Yapılar */
+/* ekran boyutu 800px altındayken çalışır */
+@media (max-width: 800px) {
+  /* header alanı */
+  header nav {
+    display: none;
+  }
+  header .nav-btn {
+    display: block;
+  }
+  /* hero alanı */
+  #hero {
+    justify-content: center;
+  }
+}
+@media (max-width: 1000px) {
+  /* footer alanı */
+  footer .links {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 50px;
+    padding: 40px;
+    column-gap: 100px;
+  }
+  footer form {
+    flex-direction: column;
+  }
+  footer form input {
+    max-width: 200px;
+  }
+  /*kartlar alanı*/
+  .cards {
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+  .card {
+    max-width: 400px;
+  }
+}
+/* ekran boyutu 1200px altındayken çalışır */
+@media (max-width: 1200px) {
+  /* window alanı */
+  #window-sec {
+    flex-direction: column;
+    align-items: center;
+  }
+  .windows .window {
+    height: 300px;
+  }
+}
+/* ekran boyutu 1000px üstündeyken çalışır */
+@media (min-width: 1000px) {
+  section {
+    padding: 100px;
+  }
+}
