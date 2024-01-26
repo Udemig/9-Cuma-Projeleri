@@ -289,6 +289,154 @@ footer .bottom {
   width: 50px;
   top: -50px;
 }
+
+/* Projeler Alanı */
+#projects-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+#projects-sec .project {
+  display: flex;
+  gap: 30px;
+}
+.project-image {
+  display: flex;
+  align-items: end;
+  background: #323443;
+  position: relative;
+  padding: 40px 60px 1px;
+}
+.project-image:hover {
+  background: linear-gradient(45deg, #c899ff 0%, #43dce7 52%, #49f5a2 90%);
+  cursor: pointer;
+}
+.project-image .icon {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background-color: #414141;
+  display: flex;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  gap: 30px;
+}
+/*! Takım Sayfası */
+#count-sec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+.count-sec-left {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.count-sec-left .counter {
+  padding: 20px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.counter .boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  margin-top: 20px;
+}
+.boxes .box {
+  background-color: #000115;
+  padding: 10px;
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; */
+  text-align: center;
+  border-radius: 10px;
+}
+.count-sec-left .buttons {
+  display: flex;
+  gap: 20px;
+}
+.count-sec-left .buttons button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #30a900;
+}
+.count-sec-left .buttons button:hover {
+  background-color: #30a900;
+}
+.count-sec-right img {
+  border-radius: 10px;
+}
+/* Resimler Alanı */
+#images-sec {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+.img-wrapper {
+  position: relative;
+}
+.img-wrapper img {
+  width: 400px;
+  border-radius: 20px;
+}
+.img-wrapper h1 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+/* Bağış Alanı */
+#donate-sec {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.donate-sec-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.donate-sec-content {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  justify-content: center;
+  gap: 40px;
+}
+.donate-sec-people {
+  display: flex;
+  color: white;
+  background: #640863;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 60px;
+}
+.donate-sec-people img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 /*
 *
 *
@@ -320,19 +468,19 @@ footer .bottom {
 
 /*! Responsive Yapılar */
 /* ekran boyutu 800px altındayken çalışır */
-@media (max-width: 800px) {
-  /* header alanı */
-  header nav {
-    display: none;
+
+@media (max-width: 1500px) {
+  #images-sec {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
   }
-  header .nav-btn {
-    display: block;
-  }
-  /* hero alanı */
-  #hero {
-    justify-content: center;
+  #images-sec img {
+    width: 400px;
   }
 }
+
 @media (max-width: 1000px) {
   /* footer alanı */
   footer .links {
@@ -355,6 +503,80 @@ footer .bottom {
   .card {
     max-width: 400px;
   }
+  /* projler sayfası */
+  .welcome {
+    padding: 100px 20px;
+    font-size: 40px;
+  }
+  /* bağış alanı */
+  .donate-sec-content {
+    grid-template-columns: repeat(3, 200px);
+  }
+}
+@media (max-width: 800px) {
+  /* header alanı */
+  header nav {
+    display: none;
+  }
+  header .nav-btn {
+    display: block;
+  }
+  .toggle {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    background: #323443;
+    border-radius: 20px;
+    padding: 20px;
+    top: 75px;
+    right: 5px;
+  }
+  .toggle a:hover {
+    color: #30a900;
+  }
+  /* hero alanı */
+  #hero {
+    justify-content: center;
+    align-items: center;
+  }
+  #hero-inner {
+    margin: 40px;
+  }
+  /* liste alanı */
+  #list-sec {
+    padding: 30px;
+    /* border: 1px solid red; */
+  }
+  #list-sec .info {
+    flex-direction: column;
+  }
+  #list-sec .info h2,
+  .info p {
+    /* Bu stile hiç değer ataması yapılmamış gibi davranır */
+    max-width: unset;
+  }
+  #what-sec {
+    flex-direction: column;
+  }
+  #what-sec .info {
+    margin-bottom: 40px;
+    flex-direction: column;
+  }
+  #what-sec .cards {
+    gap: 40px;
+  }
+  /* takım sayfası */
+  #count-sec {
+    flex-direction: column-reverse;
+  }
+  #count-sec .buttons {
+    font-size: 15px;
+    justify-content: space-between;
+  }
+  /* bağış alanı */
+  .donate-sec-content {
+    grid-template-columns: repeat(2, 200px);
+  }
 }
 /* ekran boyutu 1200px altındayken çalışır */
 @media (max-width: 1200px) {
@@ -366,10 +588,59 @@ footer .bottom {
   .windows .window {
     height: 300px;
   }
+  /* what section */
+  #what-sec {
+    flex-direction: column;
+    gap: 50px;
+  }
+  #what-sec .info {
+    display: flex;
+    gap: 20px;
+    max-width: unset !important;
+  }
+  #what-sec .info p {
+    max-width: unset;
+  }
+  #what-sec .info h1 {
+    white-space: nowrap;
+  }
+  /* projeler alanı */
+  #projects-sec .project {
+    flex-direction: column-reverse;
+  }
+  #projects-sec .project-image {
+    justify-content: center;
+    padding: 20px 100px 0;
+  }
+}
+@media (max-width: 500px) {
+  footer {
+    padding: 5px;
+  }
+  footer .links {
+    padding: 5;
+    column-gap: 50px;
+  }
+  .project-image {
+    padding: 0 30px !important;
+  }
+  .project-info {
+    margin-top: 70px;
+  }
 }
 /* ekran boyutu 1000px üstündeyken çalışır */
 @media (min-width: 1000px) {
   section {
     padding: 100px;
+  }
+}
+@media (max-width: 700px) {
+  .windows .window {
+    min-width: 150px;
+  }
+}
+@media (max-width: 600px) {
+  .windows .window {
+    min-width: 100px;
   }
 }
