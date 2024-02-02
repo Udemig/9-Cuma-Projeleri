@@ -1,0 +1,496 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=Edu+SA+Beginner:wght@400;500;600;700&family=Lumanosimo&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(/images/food-2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.container {
+  background: rgba(226, 226, 226, 0.5);
+  max-width: 90rem;
+  min-height: 70vh;
+  margin: 4vw auto;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(104, 67, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 1000px) {
+  .container {
+    margin: auto;
+    min-height: 100vh;
+    border-radius: unset;
+  }
+}
+.container header {
+  display: grid;
+  grid-template-areas: "logo right right";
+  padding: 40px;
+  background-color: rgba(190, 190, 190, 0.5);
+  border-radius: 15px;
+}
+@media (max-width: 700px) {
+  .container header {
+    display: flex;
+    flex-direction: column;
+    border-radius: unset;
+  }
+}
+.container header .logo {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 150px;
+  transition: all 0.3s;
+}
+.container header .logo:hover {
+  transform: translateY(-2px);
+  scale: 1.02;
+}
+@media (max-width: 700px) {
+  .container header .logo {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1000px) {
+  .container header .logo {
+    margin: 0 auto;
+  }
+}
+.container header .logo img {
+  height: 100px;
+}
+.container header .logo a {
+  text-decoration: none;
+  font-family: "Pacifico", cursive;
+  color: black;
+}
+.container header .right {
+  grid-area: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-right: 150px;
+}
+@media (max-width: 700px) {
+  .container header .right {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 550px) {
+  .container header .right {
+    gap: 10px;
+  }
+}
+@media (max-width: 380px) {
+  .container header .right {
+    gap: 5px;
+  }
+}
+@media (max-width: 1000px) {
+  .container header .right {
+    margin: 0 auto;
+  }
+}
+.container header .right .search_form form {
+  background: white;
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  padding-left: 8px;
+  transition: 0.3s;
+}
+.container header .right .search_form form:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+.container header .right .search_form form input {
+  border: none;
+  outline: none;
+  width: 300px;
+  text-indent: 8px;
+}
+.container header .right .search_form form input::-moz-placeholder {
+  color: #9d7101;
+}
+.container header .right .search_form form input::placeholder {
+  color: #9d7101;
+}
+@media (max-width: 550px) {
+  .container header .right .search_form form input {
+    width: 150px;
+  }
+}
+@media (max-width: 380px) {
+  .container header .right .search_form form input {
+    width: 75px;
+  }
+}
+.container header .right .search_form form button {
+  background-color: #fab604;
+  padding: 10px 30px;
+  border-radius: 40px;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Edu SA Beginner", cursive;
+}
+.container header .right .search_form form button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.27);
+}
+@media (max-width: 380px) {
+  .container header .right .search_form form button {
+    padding: 5px 15px;
+  }
+}
+.container header .right .likes {
+  font-size: 25px;
+  background: #fab604;
+  padding: 7px;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+}
+.container header .right .likes:hover > .list {
+  visibility: visible;
+  opacity: 1;
+}
+.container header .right .likes .list {
+  visibility: visible;
+  position: absolute;
+  top: 50px;
+  right: -300px;
+  margin-right: 150px;
+  opacity: 0;
+  background-image: linear-gradient(90deg, #fab604 0%, #c28b00 100%);
+  padding: 10px;
+  transition: all 1s;
+  z-index: 1000000;
+  border-radius: 20px;
+  cursor: pointer;
+}
+@media (max-width: 900px) {
+  .container header .right .likes .list {
+    width: 150px;
+    right: -250px;
+  }
+}
+@media (max-width: 700px) {
+  .container header .right .likes .list {
+    right: -170px;
+  }
+}
+.container header .right .likes .list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid black;
+  padding: 6px;
+}
+.container header .right .likes .list a img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+@media (max-width: 900px) {
+  .container header .right .likes .list a img {
+    width: 35px;
+    height: 35px;
+  }
+}
+.container header .right .likes .list a p {
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100%;
+  flex-grow: 1;
+}
+@media (max-width: 1000px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+main .results {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+}
+main .results .result-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(243, 180, 44, 0.8196078431);
+  padding: 5px 10px;
+  border-radius: 15px;
+  width: 100%;
+  transition: all 0.3s;
+}
+@media (max-width: 1000px) {
+  main .results .result-link {
+    width: 100%;
+  }
+}
+@media (max-width: 550px) {
+  main .results .result-link {
+    width: 350px;
+  }
+}
+main .results .result-link:hover {
+  background-color: #fab604;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+main .results .result-link img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+@media (max-width: 550px) {
+  main .results .result-link img {
+    width: 30px;
+    height: 30px;
+  }
+}
+main .results .result-link .data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+@media (max-width: 550px) {
+  main .results .result-link .data {
+    font-size: 13px;
+  }
+}
+main .results .result-link .data h4 {
+  font-family: "Borel", cursive;
+  color: #8b5d00;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+  transition: 0.3s;
+}
+main .results .result-link .data h4:hover {
+  color: rgb(85, 45, 0);
+}
+main .results .result-link .data p {
+  font-family: "Pacifico", cursive;
+  white-space: nowrap;
+}
+main .recipe {
+  background-color: rgba(190, 190, 190, 0.5);
+}
+main .recipe figure {
+  height: 300px;
+  position: relative;
+}
+main .recipe figure::before {
+  content: "";
+  display: block;
+  background-image: linear-gradient(90deg, #fab604 0%, #c28b00 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+main .recipe figure img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .recipe figure h1 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 20%) skewY(-6deg);
+  color: black;
+  font-weight: 600;
+  background-image: linear-gradient(90deg, #ffbe18 0%, #f76b1c 100%);
+  white-space: nowrap;
+  padding: 8px 30px;
+  text-shadow: 0 0 10px rgb(202, 202, 202);
+  font-family: "Pacifico", cursive;
+  border-radius: 3px;
+  letter-spacing: 3px;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main .recipe figure .like-area {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 20px;
+}
+main .recipe figure .like-area i {
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 10px;
+  color: #a73d01;
+  transition: all 0.3s;
+}
+main .recipe figure .like-area i:hover {
+  background: #a73d01;
+  cursor: pointer;
+  color: #fff;
+}
+main .recipe .ingredients {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  justify-content: center;
+  margin-top: 35px;
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  main .recipe .ingredients {
+    align-items: center;
+    padding: 20px;
+  }
+}
+main .recipe .ingredients ul {
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 550px) {
+  main .recipe .ingredients ul {
+    grid-template-columns: 1fr;
+  }
+}
+main .recipe .ingredients ul li {
+  display: flex;
+  gap: 10px;
+}
+main .recipe .ingredients ul li i {
+  color: #a73d01;
+}
+main .recipe .ingredients ul li p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+main .recipe .ingredients button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  margin: 50px auto;
+  width: 100%;
+  background-color: #f76b1c;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+main .recipe .ingredients button:hover {
+  scale: 0.97;
+}
+main .recipe .ingredients button span {
+  font-family: "Edu SA Beginner", cursive;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+main .recipe .directions {
+  text-align: center;
+  padding-bottom: 40px;
+}
+main .recipe .directions h2 {
+  transform: skewY(-3deg);
+  font-weight: 600;
+  color: #a73d01;
+  font-family: "Pacifico", cursive;
+  letter-spacing: 3px;
+  font-size: 27px;
+  text-shadow: 0 0 10px #f76b1c;
+}
+main .recipe .directions p {
+  padding: 50px;
+  font-weight: 400;
+}
+main .recipe .directions p span {
+  color: #cb4a00;
+}
+main .recipe .directions a {
+  border: 1px solid #f76b1c;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+main .recipe .directions a:hover {
+  background-color: #f76b1c;
+}
+main .shopping h2 {
+  text-align: center;
+  font-family: "Edu SA Beginner", cursive;
+  padding: 5px 2px;
+  margin: 30px;
+}
+main .shopping .button-area {
+  display: flex;
+  justify-content: end;
+  margin: 5px;
+  padding: 5px;
+}
+main .shopping .button-area button {
+  background-color: crimson;
+  border: none;
+  padding: 7px;
+  color: white;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+main .shopping .button-area button:hover {
+  scale: 0.96;
+  cursor: pointer;
+  background-color: rgb(145, 0, 29);
+}
+main .shopping ul li {
+  list-style: none;
+  padding: 5px;
+  font-family: "Edu SA Beginner", cursive;
+  border-bottom: 1px solid #8b5d00;
+  font-weight: 600;
+}
+main .shopping ul li i {
+  cursor: pointer;
+  font-size: 20px;
+}/*# sourceMappingURL=style.css.map */

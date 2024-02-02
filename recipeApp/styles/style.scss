@@ -1,0 +1,482 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=Edu+SA+Beginner:wght@400;500;600;700&family=Lumanosimo&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@mixin ipad {
+  @media (max-width: 700px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: 550px) {
+    @content;
+  }
+}
+@mixin mobile-middle {
+  @media (max-width: 380px) {
+    @content;
+  }
+}
+@mixin ninenty {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+@mixin pc-middle {
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(/images/food-2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.container {
+  background: rgba(226, 226, 226, 0.5);
+  max-width: 90rem;
+  min-height: 70vh;
+  margin: 4vw auto;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(104, 67, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  @include pc-middle() {
+    margin: auto;
+    min-height: 100vh;
+    border-radius: unset;
+  }
+
+  header {
+    display: grid;
+    grid-template-areas: "logo right right";
+    padding: 40px;
+    background-color: rgba(190, 190, 190, 0.5);
+    border-radius: 15px;
+    @include ipad() {
+      display: flex;
+      flex-direction: column;
+      border-radius: unset;
+    }
+    .logo {
+      grid-area: logo;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-left: 150px;
+      transition: all 0.3s;
+      &:hover {
+        transform: translateY(-2px);
+        scale: 1.02;
+      }
+      @include ipad() {
+        margin: 0 auto;
+      }
+      @include pc-middle() {
+        margin: 0 auto;
+      }
+      img {
+        height: 100px;
+      }
+      a {
+        text-decoration: none;
+        font-family: "Pacifico", cursive;
+        color: black;
+      }
+    }
+    .right {
+      grid-area: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      margin-right: 150px;
+      @include ipad() {
+        margin: 0 auto;
+      }
+      @include mobile() {
+        gap: 10px;
+      }
+      @include mobile-middle() {
+        gap: 5px;
+      }
+      @include pc-middle() {
+        margin: 0 auto;
+      }
+      .search_form {
+        form {
+          background: white;
+          display: flex;
+          align-items: center;
+          border-radius: 40px;
+          padding-left: 8px;
+          transition: 0.3s;
+          &:focus-within {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+          }
+          input {
+            border: none;
+            outline: none;
+            width: 300px;
+            text-indent: 8px;
+            &::placeholder {
+              color: #9d7101;
+            }
+            @include mobile() {
+              width: 150px;
+            }
+            @include mobile-middle() {
+              width: 75px;
+            }
+          }
+          button {
+            background-color: #fab604;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: "Edu SA Beginner", cursive;
+            &:hover {
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.27);
+            }
+            @include mobile-middle() {
+              padding: 5px 15px;
+            }
+          }
+        }
+      }
+      .likes {
+        font-size: 25px;
+        background: #fab604;
+        padding: 7px;
+        border-radius: 8px;
+        position: relative;
+        cursor: pointer;
+        &:hover > .list {
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .list {
+          visibility: visible;
+          position: absolute;
+          top: 50px;
+          right: -300px;
+          margin-right: 150px;
+          opacity: 0;
+          background-image: linear-gradient(90deg, #fab604 0%, #c28b00 100%);
+          padding: 10px;
+          transition: all 1s;
+          z-index: 1000000;
+          border-radius: 20px;
+          cursor: pointer;
+          @include ninenty() {
+            width: 150px;
+            right: -250px;
+          }
+          @include ipad() {
+            right: -170px;
+          }
+          a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid black;
+            padding: 6px;
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              @include ninenty() {
+                width: 35px;
+                height: 35px;
+              }
+            }
+            p {
+              font-size: 15px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100%;
+  flex-grow: 1;
+  @include pc-middle() {
+    grid-template-columns: 1fr;
+  }
+  .results {
+    // margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    .result-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f3b42cd1;
+      padding: 5px 10px;
+      border-radius: 15px;
+      width: 100%;
+      transition: all 0.3s;
+      @include pc-middle() {
+        width: 100%;
+      }
+      @include mobile() {
+        width: 350px;
+      }
+      &:hover {
+        background-color: #fab604;
+        transform: translateY(-2px);
+        cursor: pointer;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        @include mobile() {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      .data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        @include mobile() {
+          font-size: 13px;
+        }
+        h4 {
+          font-family: "Borel", cursive;
+          color: #8b5d00;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 200px;
+          transition: 0.3s;
+          &:hover {
+            color: rgb(85, 45, 0);
+          }
+        }
+        p {
+          font-family: "Pacifico", cursive;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+  .recipe {
+    background-color: rgba(190, 190, 190, 0.5);
+    figure {
+      height: 300px;
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        background-image: linear-gradient(90deg, #fab604 0%, #c28b00 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      h1 {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 20%) skewY(-6deg);
+        color: black;
+        font-weight: 600;
+        background-image: linear-gradient(90deg, #ffbe18 0%, #f76b1c 100%);
+        white-space: nowrap;
+        padding: 8px 30px;
+        text-shadow: 0 0 10px rgb(202, 202, 202);
+        font-family: "Pacifico", cursive;
+        border-radius: 3px;
+        letter-spacing: 3px;
+        max-width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .like-area {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding: 20px;
+        i {
+          font-size: 25px;
+          padding: 5px;
+          border-radius: 10px;
+          color: #a73d01;
+          transition: all 0.3s;
+          &:hover {
+            background: #a73d01;
+            cursor: pointer;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .ingredients {
+      display: flex;
+      flex-direction: column;
+      //   align-items: center;
+      @include pc-middle() {
+        align-items: center;
+        padding: 20px;
+      }
+      padding: 40px;
+      justify-content: center;
+      margin-top: 35px;
+      width: 100%;
+      ul {
+        display: grid;
+        list-style: none;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        @include mobile() {
+          grid-template-columns: 1fr;
+        }
+        li {
+          display: flex;
+          gap: 10px;
+          i {
+            color: #a73d01;
+          }
+          p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+          }
+        }
+      }
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px;
+        margin: 50px auto;
+        width: 100%;
+        background-color: #f76b1c;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          scale: 0.97;
+        }
+        span {
+          font-family: "Edu SA Beginner", cursive;
+          font-weight: 900;
+          letter-spacing: 2px;
+        }
+      }
+    }
+    .directions {
+      text-align: center;
+      padding-bottom: 40px;
+      h2 {
+        transform: skewY(-3deg);
+        font-weight: 600;
+        color: #a73d01;
+        font-family: "Pacifico", cursive;
+        letter-spacing: 3px;
+        font-size: 27px;
+        text-shadow: 0 0 10px #f76b1c;
+      }
+      p {
+        padding: 50px;
+        font-weight: 400;
+        span {
+          color: #cb4a00;
+        }
+      }
+      a {
+        border: 1px solid #f76b1c;
+        padding: 10px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s;
+        &:hover {
+          background-color: #f76b1c;
+        }
+      }
+    }
+  }
+  .shopping {
+    h2 {
+      text-align: center;
+      font-family: "Edu SA Beginner", cursive;
+      padding: 5px 2px;
+      margin: 30px;
+    }
+    .button-area {
+      display: flex;
+      justify-content: end;
+      margin: 5px;
+      padding: 5px;
+      button {
+        background-color: crimson;
+        border: none;
+        padding: 7px;
+        color: white;
+        border-radius: 10px;
+        transition: all 0.3s;
+        &:hover {
+          scale: 0.96;
+          cursor: pointer;
+          background-color: rgb(145, 0, 29);
+        }
+      }
+    }
+    ul {
+      li {
+        list-style: none;
+        padding: 5px;
+        font-family: "Edu SA Beginner", cursive;
+        border-bottom: 1px solid #8b5d00;
+        font-weight: 600;
+        i {
+          cursor: pointer;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
