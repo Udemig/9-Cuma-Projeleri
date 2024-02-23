@@ -4,7 +4,6 @@ export const renderResult = (recipes) => {
   //   console.log(recipes);
   elements.resultsList.innerHTML = "";
   recipes.slice(0, 10).forEach((recipe) => {
-    console.log(recipe);
     const markup = `
     <a href="#${recipe.recipe_id}" class="result-link">
         <img src="${recipe.image_url}" alt="" />
@@ -21,7 +20,6 @@ export const renderResult = (recipes) => {
 };
 // ekran yüklenme gifi
 export const renderLoader = (parent) => {
-  console.log(parent);
   // loader HTML hazırlama
   const loader = `
         <div class="loader">
@@ -30,4 +28,17 @@ export const renderLoader = (parent) => {
   `;
   // loader'ı bize gelen html elemanının içerisine gönderme
   parent.insertAdjacentHTML("afterbegin", loader);
+};
+
+export const renderBasketItems = (items) => {
+  const markup = items
+    .map(
+      (item) => `  
+    <li data-id=${item.id}>
+      <i class="bi bi-x" id="delete-item"></i>
+      <span>${item.title}</span>
+    </li>`
+    )
+    .join("");
+  elements.basketList.innerHTML = markup;
 };
