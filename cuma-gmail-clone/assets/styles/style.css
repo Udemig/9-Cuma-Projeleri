@@ -69,7 +69,8 @@ header .left .hamburger-menu {
   padding: 5px;
   font-size: var(--icon-size);
 }
-header .left img, header .left span {
+header .left img,
+header .left span {
   cursor: pointer;
 }
 header .middle {
@@ -149,7 +150,9 @@ nav .nav-bottom div {
   align-items: center;
 }
 
-.hide .create span, .hide .nav-middle a span, .hide .nav-bottom span {
+.hide .create span,
+.hide .nav-middle a span,
+.hide .nav-bottom span {
   display: none;
 }
 
@@ -323,7 +326,8 @@ aside span {
 .modal-wrapper .modal-inner form label {
   margin-top: 40px;
 }
-.modal-wrapper .modal-inner form input, .modal-wrapper .modal-inner form textarea {
+.modal-wrapper .modal-inner form input,
+.modal-wrapper .modal-inner form textarea {
   border: 1px solid gray;
   border-radius: 4px;
   margin-top: 10px;
@@ -350,4 +354,47 @@ aside span {
 }
 .modal-wrapper .modal-inner form #send-mail-btn:hover {
   box-shadow: 0 0 10px gray;
+}
+
+.bi-star-fill {
+  color: rgb(232, 232, 0);
+}
+
+#toggle {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  width: 75px;
+  height: 25px;
+  border-radius: 160px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1), inset 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 -4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+}
+#toggle .indicator {
+  display: flex;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: black;
+  position: absolute;
+  transition: all 0.5s;
+  top: 0;
+  left: 0;
+  transform: scale(0.5);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), inset 0 -4px 4px rgba(255, 255, 255, 0.2);
+}
+
+#toggle.active {
+  background: #7ea8b3;
+}
+
+#toggle.active .indicator {
+  left: 20px;
+}
+
+.darkMode {
+  background-color: #8dbbc9;
 }/*# sourceMappingURL=style.css.map */
