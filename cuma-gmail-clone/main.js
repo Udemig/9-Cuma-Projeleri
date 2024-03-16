@@ -1,5 +1,5 @@
-import { months } from "./constants.js";
-import { renderMails, showModal } from "./ui.js";
+import { categories, months } from "./constants.js";
+import { renderCategories, renderMails, showModal } from "./ui.js";
 
 // localstorage'dan veri alma
 const strMailData = localStorage.getItem("data");
@@ -18,8 +18,8 @@ const form = document.querySelector("#create-mail-form");
 const mailsArea = document.querySelector(".mails-area");
 const searchButton = document.querySelector("#search-icon");
 const searchInput = document.querySelector("#search-input");
-console.log(body);
-//
+const categoryArea = document.querySelector(".nav-middle");
+// console.log(categoryArea);
 
 //! Olay İzleyicileri
 hamburgerMenu.addEventListener("click", hideMenu);
@@ -53,6 +53,7 @@ btn.addEventListener("click", () => {
   body.classList.toggle("darkMode");
   // mailsArea.classList.toggle("darkMode");
 });
+categoryArea.addEventListener("click", watchCategory);
 //! Fonksiyonlar
 
 //
@@ -207,4 +208,20 @@ function searchMails() {
   );
   // mailleri ekrana basma
   renderMails(mailsArea, filtredArray);
+}
+// kategorileri izleyip seçeceğimiz kategoriye göre ekrana yıldızlanan öğeyi getirme
+function watchCategory(e) {
+  const leftNav = e.target.parentElement;
+  const selectedCategory = leftNav.dataset.name;
+  renderCategories(categoryArea, categories, selectedCategory);
+
+  if (selectedCategory === "Yıldızlananlar") {
+    console.log("yıldızlı");
+    // stared değeri true olanları seçme
+    const filtred = mailData.filter((i) => i.stared === true);
+    renderMails(mailsArea, filtred);
+    return;
+  }
+  // yıldızlı dışında bir kategoriye tıklanılırsa hepsini göster
+  renderMails(mailsArea, mailData);
 }

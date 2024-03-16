@@ -39,3 +39,24 @@ export function renderMails(outlet, data) {
     )
     .join(" ");
 }
+
+export function renderCategories(outlet, data, selectCategory) {
+  // eski kategorileri sil
+  outlet.innerHTML = "";
+
+  // bize gelen diziyi forEach ile dönüp özelliklerini ekleme
+  data.forEach((category) => {
+    const categoryItem = document.createElement("a");
+    // kategori elemanına veri ekleme
+    categoryItem.dataset.name = category.title;
+    console.log(categoryItem);
+    // Aktif olan kategoriye active classı
+    categoryItem.className = selectCategory === category.title && "active";
+
+    categoryItem.innerHTML = `
+    <i class="${category.class}"></i>
+    <span>${category.title}</span>
+    `;
+    outlet.appendChild(categoryItem);
+  });
+}
