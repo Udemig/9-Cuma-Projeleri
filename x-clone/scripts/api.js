@@ -13,11 +13,25 @@ export class API {
   async getUser(userName) {
     try {
       const res = await fetch(
-        `${baseURL}/usermedia.php?screenname=${userName}`,
+        `https://twitter-api45.p.rapidapi.com/screenname.php?screenname=${userName}`,
         options
       );
       const data = await res.json();
       console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async fetchData(endpoint, paramName, paramValue) {
+    try {
+      // parametre olarak gelen linke
+      // yeni parametre olarak gelen url parametresine istek atma
+      const res = await fetch(
+        `${baseURL}${endpoint}?${paramName}=${paramValue}`,
+        options
+      );
+      const data = await res.json();
       return data;
     } catch (error) {
       console.log(error);

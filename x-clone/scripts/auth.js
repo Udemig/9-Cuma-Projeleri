@@ -66,5 +66,7 @@ authEle.loginForm.addEventListener("submit", async (e) => {
     const userData = await api.getUser(name);
     // kullanıcıyı locale ekler
     setLocal("user", userData);
+    // kullanıcıyı anasayfaya yönlendirir
+    window.location = "/";
   }
 });

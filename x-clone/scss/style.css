@@ -41,6 +41,125 @@
   border-radius: 5px;
 }
 
+.top {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 20px;
+}
+.top i {
+  cursor: pointer;
+}
+.top h3 {
+  font-size: 20px;
+}
+
+.tweet-info {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.tweet-info .user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tweet-info .user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: -20px !important;
+}
+.tweet-info .user .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+.tweet-info .user button {
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.tweet-info .user button:hover {
+  background: #1a8cd8;
+  color: white;
+  scale: 0.98;
+}
+.tweet-info img {
+  max-height: 300px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 10px;
+}
+.tweet-info .content {
+  padding: 15px;
+}
+.tweet-info .content video {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 500px;
+}
+.tweet-info .data {
+  display: flex;
+  justify-content: space-between;
+}
+.tweet-info .data p {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+.tweet-info .data p .send-span {
+  margin-top: 30px;
+}
+.tweet-info .data p button {
+  background: none;
+  color: rgb(161, 161, 161);
+  border-radius: 10px;
+}
+.tweet-info .data p button:hover {
+  background: rgb(61, 61, 61);
+}
+.tweet-info .data span {
+  display: inline-block;
+}
+
+.news {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: start;
+}
+.news form {
+  background: #313131;
+  padding: 5px 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 40px;
+}
+.news form input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+}
+.news ul {
+  background: #313131;
+  padding: 20px;
+  list-style: none;
+  min-width: 230px;
+  border-radius: 10px;
+}
+.news ul li {
+  padding: 10px;
+  border-bottom: 1px solid rgb(95, 94, 94);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -278,6 +397,8 @@ main #post-tweet .input-area .buttons button:hover {
 .tweet .body .user .info {
   display: flex;
   gap: 10px;
+  text-decoration: none;
+  color: white;
 }
 .tweet .body .user p {
   cursor: pointer;
@@ -286,12 +407,21 @@ main #post-tweet .input-area .buttons button:hover {
 .tweet .body .user p:hover {
   text-decoration: underline;
 }
+.tweet .content {
+  text-decoration: none !important;
+  color: white;
+}
 .tweet .content img {
   max-height: 300px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
+}
+.tweet .content video {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 500px;
 }
 .tweet .buttons {
   display: flex;
@@ -301,6 +431,7 @@ main #post-tweet .input-area .buttons button:hover {
 .tweet .buttons button {
   background: none;
   color: rgb(185, 185, 185);
+  border-radius: 10px;
 }
 .tweet .buttons button:hover {
   background: rgb(59, 59, 59);
