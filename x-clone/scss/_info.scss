@@ -10,75 +10,65 @@
     font-size: 20px;
   }
 }
-.tweet-info {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  .user {
-    &-img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-top: -20px !important;
-    }
 
+.tweet-info {
+  padding: 20px;
+
+  .user {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .info {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 20px;
-    }
+    gap: 10px;
     button {
       border-radius: 10px;
+      font-size: 13px;
+      padding: 5px;
       white-space: nowrap;
-      transition: all 0.3s;
-      &:hover {
-        background: #1a8cd8;
-        color: white;
-        scale: 0.98;
-      }
     }
   }
-  img {
-    max-height: 300px;
-    width: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-  }
+
   .content {
-    padding: 15px;
-    video {
-      width: 100%;
-      border-radius: 10px;
-      max-height: 500px;
+    margin: 30px 0;
+  }
+
+  .info {
+    display: flex;
+    gap: 10px;
+
+    p:nth-child(1) {
+      color: gray;
+    }
+
+    p:nth-child(2) {
+      display: flex;
+      gap: 4px;
+      span:nth-child(2) {
+        color: gray;
+      }
     }
   }
-  .data {
-    display: flex;
-    justify-content: space-between;
-    p {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      justify-content: space-between;
-      .send-span {
-        margin-top: 30px;
-      }
-      button {
-        background: none;
-        color: rgb(161, 161, 161);
-        border-radius: 10px;
-        &:hover {
-          background: rgb(61, 61, 61);
-        }
-      }
-    }
-    span {
-      display: inline-block;
-    }
+}
+
+#comment-form {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+
+  img {
+    border-radius: 50%;
+  }
+
+  input {
+    flex: 1;
+    background: black;
+    font-size: 20px;
+    color: white;
+    border: none;
+    outline: none;
+  }
+  button {
+    background: #1a8cd8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
   }
 }

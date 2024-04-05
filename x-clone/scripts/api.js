@@ -1,11 +1,11 @@
 const options = {
-  method: "GET",
+  method: 'GET',
   headers: {
-    "X-RapidAPI-Key": "17bfa31bbbmsh1355592a7405f9bp1dd229jsnd7e87c1e1260",
-    "X-RapidAPI-Host": "twitter-api45.p.rapidapi.com",
+    'X-RapidAPI-Key': '17bfa31bbbmsh1355592a7405f9bp1dd229jsnd7e87c1e1260',
+    'X-RapidAPI-Host': 'twitter-api45.p.rapidapi.com',
   },
 };
-const baseURL = "https://twitter-api45.p.rapidapi.com";
+const baseURL = 'https://twitter-api45.p.rapidapi.com';
 
 export class API {
   constructor() {}
@@ -23,14 +23,11 @@ export class API {
       console.log(error);
     }
   }
-  async fetchData(endpoint, paramName, paramValue) {
+  async fetchData(endpoint) {
     try {
       // parametre olarak gelen linke
       // yeni parametre olarak gelen url parametresine istek atma
-      const res = await fetch(
-        `${baseURL}${endpoint}?${paramName}=${paramValue}`,
-        options
-      );
+      const res = await fetch(`${baseURL}${endpoint}`, options);
       const data = await res.json();
       return data;
     } catch (error) {
