@@ -14,6 +14,7 @@ export const mainEle = {
   tweetsArea: document.querySelector('.tweetsArea'),
   main: document.querySelector('main'),
   searchForm: document.querySelector('aside form'),
+  themeCheck: document.querySelector('#theme'),
 };
 
 //* Kullanıcı bilgilerini ekrana basar
@@ -50,20 +51,26 @@ const getMedia = (media) => {
   return '';
 };
 
-export const renderTimeLine = (user, tweets, outlet) => {
-  let timeLineHTML = tweets
+export const renderTimeLine = (user, data, outlet) => {
+  let timeLineHTML = data
     .map(
       (tweet) => `
   <div class="tweet">
-    <img src=${tweet[user].avatar} id="user-img" />
+   ${tweet[user] ? `<img src=${tweet[user]?.avatar} id="user-img" />` : ''}
+    
     <div class="body">
         <div class="user">
-          <a href="?page=user&q=${tweet[user].screen_name}" class="info">
-            <img src=${tweet[user].avatar} id="mobile-img" />
-            <b>${tweet[user].name}</b>
-            <p>@${tweet[user].screen_name}</p>
+        ${
+          tweet[user]
+            ? `<a href="?page=user&q=${tweet[user]?.screen_name}" class="info">
+            <img src=${tweet[user]?.avatar} id="mobile-img" />
+            <b>${tweet[user]?.name}</b>
+            <p>@${tweet[user]?.screen_name}</p>
             <p>${moment(tweet.created_at).fromNow()}</p>
-          </a>
+          </a>`
+            : '<p> <i class="bi bi-recycle"></i> Gönderi Yeniden Yayınlandı</p>'
+        }
+          
           <i class="bi bi-three-dots"></i>
         </div>
         <a href="?page=status&q=${tweet.tweet_id}" class="content">
@@ -190,5 +197,88 @@ export const renderEmptyInfo = (text = 'Gönderi') => {
 
 // kullanıcı detay sayfasını ekrana bas
 export const renderUser = (user) => {
-  mainEle.main.innerHTML = '';
+  mainEle.main.innerHTML = `
+      <div class="user-page">
+        <!-- üst kısım -->
+        <div class="page-top">
+          <!-- üstteki nav -->
+          <div id="nav">
+            <i id="back-btn" class="bi bi-arrow-left"></i>
+
+            <div>
+              <h3>${user.name}</h3>
+              <p>
+                <span>${user.statuses_count}</span>
+                <span>Gönderi</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- banner -->
+          <div class="banner">
+            <img
+              src="${user.header_image}"
+            />
+            <img
+              src="${user.avatar}"
+            />
+          </div>
+
+          <!-- butonlar -->
+          <div class="buttons">
+            <div><i class="bi bi-three-dots"></i></div>
+            <div><i class="bi bi-envelope"></i></div>
+            <button>Takip Et</button>
+          </div>
+
+          <!-- kullanıcı bilgileri -->
+          <div class="user_info">
+            <h4>
+              <span>${user.name}</span>
+              <i class="bi bi-patch-check-fill"></i>
+            </h4>
+
+            <p class="p_name">@${user.profile}</p>
+
+            <div>
+              <a href="#">
+                <span>${user.friends}</span>
+                <span>Takip Edilen</span>
+              </a>
+              <a href="#">
+                <span>${user.sub_count}</span>
+                <span>Takipçi</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- alttaki butonlar -->
+          <div class="cat-wrapper">
+            <label>
+              <input name="cat" type="radio" checked />
+              <span>Gönderiler</span>
+            </label>
+            <label>
+              <input name="cat" type="radio" />
+              <span>Yanıtlar</span>
+            </label>
+            <label>
+              <input name="cat" type="radio" />
+              <span>Medya</span>
+            </label>
+            <label>
+              <input name="cat" type="radio" />
+              <span>Beğeni</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- tweetler alanı -->
+        <div class="page-bottom">
+          <div class="d-flex justify-content-center mt-4">
+            <div class="spinner-border" role="status"></div>
+          </div>
+        </div>
+      </div>
+  `;
 };

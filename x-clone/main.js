@@ -7,6 +7,7 @@ import {
   renderLoader,
   renderTimeLine,
   renderUserInfo,
+  renderUser,
 } from './scripts/ui.js';
 
 const api = new API();
@@ -20,6 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // localden kullanıcı bilgilerini alıp ekrana renderlama
   const user = getLocal('user');
   renderUserInfo(user);
+
+  // localden tema bilgilerini al
+  const isDarkTheme = getLocal('theme');
+
+  if (!isDarkTheme) {
+    document.body.classList.add('light');
+    mainEle.themeCheck.checked = false;
+  }
 });
 
 //* Çıkış yap butonuna tıkladığımızda localden verileri sil ve auth.html sayfasına yönlendir.
@@ -67,14 +76,22 @@ const controlURL = async (e) => {
       break;
 
     case 'user':
-    // yükleniyoru bas
-    // renderEmptyInfo(query);
+      // yükleniyoru bas
+      renderEmptyInfo(query);
 
-    // // kullancının bilgilerini api'dan al
-    // api
-    //   .getUser(query)
-    //   // kullanıcın hesap bilgilerini ekrana bas
-    //   .then((user_data) => console.log(user_data));
+      // kullancının bilgilerini api'dan al
+      api.getUser(query).then((user_data) => {
+        // kullanıcın hesap bilgilerini ekrana bas
+        renderUser(user_data);
+
+        // tweetlerin geliceği yeri seç
+        const outlet = document.querySelector('.page-bottom');
+
+        // kullanıcının attığı tweetleri al
+        api.fetchData(`/timeline.php?screenname=${query}`).then((data) => {
+          renderTimeLine('author', data.timeline, outlet);
+        });
+      });
 
     default:
       // ekrana loadingi basar
@@ -112,4 +129,20 @@ mainEle.searchForm.addEventListener('submit', (e) => {
 
   // aratılan metin ile url güncelle
   window.location = `?page=search&q=${searchTerm}`;
+});
+
+// tema değişme olayını izle
+mainEle.themeCheck.addEventListener('change', (e) => {
+  // seçişlen modu belirle
+  const isDarkMode = e.target.checked;
+
+  // seçili açıksa body alanına light classı ekle
+  if (!isDarkMode) {
+    document.body.classList.add('light');
+    localStorage.setItem('theme', 'false');
+  } else {
+    // değilse çıkar
+    document.body.classList.remove('light');
+    localStorage.setItem('theme', 'true');
+  }
 });

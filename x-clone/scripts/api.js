@@ -23,6 +23,7 @@ export class API {
       console.log(error);
     }
   }
+
   async fetchData(endpoint) {
     try {
       // parametre olarak gelen linke
